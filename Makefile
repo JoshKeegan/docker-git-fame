@@ -1,6 +1,6 @@
 # EOL has comment to prevent erroneous whitespace in variables
 IMAGE = git-fame#
-VERSION = 1.0#
+VERSION = 3#
 DOCKER_HUB_USERNAME = joshkeegan#
 
 IMAGE_URL = $(DOCKER_HUB_USERNAME)/$(IMAGE)#

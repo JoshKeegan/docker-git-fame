@@ -1,7 +1,10 @@
-FROM alpine:3.10.3
+FROM debian:bullseye-slim
 
-RUN apk add --no-cache git ruby file
-RUN gem install git_fame --no-rdoc --no-ri
+RUN apt-get update && \
+    apt-get install -y git ruby file ruby-dev make cmake pkg-config libssl-dev && \
+    # Clean up anything files left over by package management and any temp files in order to not bloat this layer
+    rm -rf /var/lib/apt/lists/* /tmp/*
+RUN gem install git_fame --no-document
 
 WORKDIR /src
 ENTRYPOINT ["git", "fame", "."]
